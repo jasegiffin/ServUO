@@ -376,7 +376,9 @@ namespace Server
         Luck = 0x00100000,
         SpellChanneling = 0x00200000,
         NightSight = 0x00400000,
-        IncreasedKarmaLoss = 0x00800000
+        IncreasedKarmaLoss = 0x00800000,
+        Brittle = 0x02000000,
+        NoRepairs = 0x04000000
     }
 
     public sealed class AosAttributes : BaseAttributes
@@ -879,6 +881,33 @@ namespace Server
             set
             {
                 this[AosAttribute.IncreasedKarmaLoss] = value;
+            }
+        }
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int Brittle
+        { 
+            get
+            { 
+            return this[AosAttribute.Brittle];
+            }
+            set
+            {
+            this[AosAttribute.Brittle] = value;
+            } 
+        	
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int NoRepairs
+        { 
+            get
+            { 
+            return this[AosAttribute.NoRepairs];
+            }
+            set
+            { 
+            this[AosAttribute.NoRepairs] = value; 
+            	
             }
         }
     }
